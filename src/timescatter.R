@@ -17,13 +17,19 @@ time<-data.frame(volunteer=rep(row.names(tcr),2),
 
 p<-ggplot(tcr,aes(x=B0total,y=B60total,shape=responder)) + geom_point() + theme_classic()
 p<-p + xlab("Day 0 unique TCRs") + ylab("Day 60 unique TCRs")
+p<-p+ theme(legend.title=element_blank(), 
+            axis.text.x  = element_text(size = 12, angle = 90, hjust = 1),
+            axis.text.y  = element_text(size = 12, angle = 0, hjust = 1))
 p
-ggsave('../results/uniqueTCRs.pdf',p)
+ggsave('../results/uniqueTCRs.png',p,height=3.25,width=4)
 
 p<-ggplot(tcr,aes(x=B0reads,y=B60reads,label=row.names(tcr))) + geom_text() + theme_classic()
 p<-p + xlab("Day 0 TCRs reads") + ylab("Day 60 TCRs reads")
+p<-p+ theme(legend.title=element_blank(), text = element_text(size=16),
+            axis.text.x  = element_text(size = 14, angle = 90, hjust = 1),
+            axis.text.y  = element_text(size = 14, angle = 0, hjust = 1))
 p
-ggsave('../results/timescatter/TCRreads.pdf',p)
+ggsave('../results/timescatter/TCRreads.png',p,height=6,width=6)
 
 p<-ggboxplot(time,y="PPIntfreq",x="day", color="day")
 p<-p + stat_compare_means(method = "wilcox.test", paired = TRUE, aes(label = ..p.signif..),label.x = 1.5)
@@ -57,7 +63,7 @@ pel<-pel + xlab("") + ylab("") +ylim(6,8)
 pel<-pel + theme(legend.position = "none") 
 
 etplot<-grid.arrange(pte, ptl, pee, pel, nrow = 2, ncol= 2)
-ggsave('../results/entropy-total.pdf',etplot)
+ggsave('../results/entropy-total.png',etplot,height=5,width=6)
 
 wilcox.test(tcr$B0entropy,tcr$B60entropy,paired=TRUE)
 wilcox.test(tcr$PPIntB0freq,tcr$PPIntB60freq,paired=TRUE)
@@ -83,4 +89,4 @@ supp$label <- c(rep("Overlap",33),rep("Day0 Unique",33),rep("Day60 Unique",33))
 s.unique<-ggplot(supp,aes(x=vaccinee,y=TCRcounts,fill=label)) + geom_col() 
 s.unique<-s.unique+ ylab("Unique TCRs") + theme_classic() + theme(legend.title = element_blank(), axis.text.x=element_blank(), axis.ticks.x=element_blank()) + xlab("Vaccinees")
 s.unique
-ggsave('../results/s_unique.pdf',s.unique)
+ggsave('../results/s_unique.png',s.unique,height=3,width=4)
