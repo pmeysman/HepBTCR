@@ -37,6 +37,7 @@ pepfiles = [p for p in listdir(pepdir) if (isfile(join(pepdir, p))
                                            and not ('VZV' in p))]
 tcrdatatmp = dict()
 for p in pepfiles:
+    # Regex to match (donor) (peptide) (replicate)
     m = re.match("(H\d+)_(P+\d*)_([abcd])_", p)
 
     if m:
@@ -80,23 +81,31 @@ for peptide in tcrdatatmp:
             tcrdata[peptide][root] = tcrdatatmp[peptide][volunteer].intersection(tcrdatatmp[peptide][b])
 
 
-
+# This is the output feature matrix
 results = dict()
-results[pp] = dict()
-results['responder'] = dict()
-results['PPB0'] = dict()
-results['PPB60'] = dict()
-results['PPnrB0'] = dict()
-results['PPnrB60'] = dict()
-results['iPPB0'] = dict()
-results['iPPB60'] = dict()
-results['PSB0'] = dict()
-results['PSB60'] = dict()
-results['IPSB0'] = dict()
-results['IPSB60'] = dict()
-results['B0'] = dict()
-results['B60'] = dict()
-results['CD154'] = dict()
+results[pp] = dict() # Count of the peptide pool TCRs
+results['responder'] = dict() # Responder status
+results['B0'] = dict() # CD4+ memory breadth at Time 0
+results['B60'] = dict() # CD4+ memory breadth at Time 60
+results['CD154'] = dict() # CD154 values
+
+# Values used to calculate the Rhbs metric (done in R script)
+results['PPnrB0'] = dict() # Leave-one-out non-fast-responder peptide pool match with Time 0
+results['PPnrB60'] = dict() # Leave-one-out non-fast-responder peptide pool match with Time 60
+results['PSB0'] = dict() # Leave-one-out peptide-specific TCR matches with Time 0
+results['PSB60'] = dict() # Leave-one-out peptide-specific TCR matches with Time 60
+
+# Variant normalisation term as a test. In this case, all peptide pool results are used. Still results in some performance.
+results['PPB0'] = dict() # Leave-one-out peptide pool match with Time 0
+results['PPB60'] = dict() # Leave-one-out peptide pool match with Time 60
+
+# Values used as a sanity check
+# Not to be used for any predictions as they were not run in a cross validation format!
+results['iPPB0'] = dict() # Own peptide pool match with Time 0
+results['iPPB60'] = dict() # Own peptide pool match with Time 60
+results['IPSB0'] = dict() # Overlap between peptide pool and peptide-specific matches at Time 0
+results['IPSB60'] = dict() # Overlap between peptide pool and peptide-specific matches at Time 60
+
 
 # Do for each repertoire file
 
