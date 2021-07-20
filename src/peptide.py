@@ -20,6 +20,11 @@ cd154file = "../data/freqCD154.txt"
 
 pp = 'PP'
 
+# Setting the c threshold from the paper at the reviewers request
+# Set based on prior Bioinformatics paper
+# Higher values than 1 will cause approximations as the hashing will not be perfect
+distance_set = 1
+
 # Get the responder type data
 
 responders = pd.read_csv(respfile,sep=",")
@@ -89,17 +94,13 @@ results['B0'] = dict() # CD4+ memory breadth at Time 0
 results['B60'] = dict() # CD4+ memory breadth at Time 60
 results['CD154'] = dict() # CD154 values
 
-# Values used to calculate the Rhbs metric (done in R script)
-results['PPnrB0'] = dict() # Leave-one-out non-fast-responder peptide pool match with Time 0
-results['PPnrB60'] = dict() # Leave-one-out non-fast-responder peptide pool match with Time 60
-results['PSB0'] = dict() # Leave-one-out peptide-specific TCR matches with Time 0
-results['PSB60'] = dict() # Leave-one-out peptide-specific TCR matches with Time 60
+# Values used to calculate the Rhbs metric =  numerator / denominator (done in R script)
+results['PPnrB0'] = dict() # Leave-one-out non-early-responder peptide pool match with Time 0 (denominator)
+results['PPnrB60'] = dict() # Leave-one-out non-early-responder peptide pool match with Time 60 (denominator)
+results['PSB0'] = dict() # Leave-one-out peptide-specific TCR matches with Time 0 (numerator)
+results['PSB60'] = dict() # Leave-one-out peptide-specific TCR matches with Time 60 (numerator)
 
-# Variant normalisation term as a test. In this case, all peptide pool results are used. Still results in some performance.
-results['PPB0'] = dict() # Leave-one-out peptide pool match with Time 0
-results['PPB60'] = dict() # Leave-one-out peptide pool match with Time 60
-
-# Values used as a sanity check
+# Values used for additional plots
 # Not to be used for any predictions as they were not run in a cross validation format!
 results['iPPB0'] = dict() # Own peptide pool match with Time 0
 results['iPPB60'] = dict() # Own peptide pool match with Time 60
@@ -136,49 +137,73 @@ for f in files:
 
 
     for peptide in tcrdata:
+
+        #Leave-one-out cross validation, where each sample is left out exactly once
         for loosample in tcrdata[peptide]:
+
+            #If sample is the sample that is left out, do not do anything with it,
+            #except checking the iPP variable (which is just a check for the own PP-specific TCRs)
             if loosample == volunteer:
                 if peptide == 'PP':
-                    preiPP.update(set(pre.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
-                    postiPP.update(set(post.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
+                    preiPP.update(pre.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
+                    postiPP.update(post.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
+
+            #This is the main leave-one-out loop
+            #All other samples are collected as training data
+            #Hamming distances are calculated and compared
+            #Sets are kept with unique matching TCRs
             else:
                 if peptide == 'PP':
+                    #This is the peptide pool data
                     if not responders.loc[loosample]['Status_2'] == 'Early-converter':
-                        prePPnr.update(set(pre.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
-                        postPPnr.update(set(post.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
+                        #This is the non-early converter samples
+
+                        #This builds the denominator for Day 0 (pre) and Day 60 (post)
+                        prePPnr.update(pre.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
+                        postPPnr.update(post.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
                         PPnr.update(tcrdata[peptide][loosample])
-                    prePP.update(set(pre.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
-                    postPP.update(set(post.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample]))
+
+                    #Extra data for additional plots
+                    prePP.update(pre.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
+                    postPP.update(post.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
                     PP.update(tcrdata[peptide][loosample])
 
                 else:
-                    prePS = set(pre.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample])
+                    #This is the epitope specific data
+                    #Used to build the numerator
+                    prePS = set(pre.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
                     preOverlap.update(prePS)
-                    postPS = set(post.raw['cdr3'].unique()).intersection(tcrdata[peptide][loosample])
+                    postPS = set(post.hammingintersect(tcrdata[peptide][loosample],dist = distance_set))
                     postOverlap.update(postPS)
                     PS.update(tcrdata[peptide][loosample])
 
+    #Calculate the Overlap Coefficient for each set.
+    #This is saved to a file and passed on to the R scripts
+
+    #Numerator
     results['PSB0'][volunteer] = len(preOverlap) / len(PS)
     results['PSB60'][volunteer] = len(postOverlap) / len(PS)
 
-    results['PPB0'][volunteer] = len(prePP) / len(PP)
-    results['PPB60'][volunteer] = len(postPP) / len(PP)
-
+    #Denominator
     results['PPnrB0'][volunteer] = len(prePPnr) / len(PPnr)
     results['PPnrB60'][volunteer] = len(postPPnr) / len(PPnr)
 
+    #Own matches to make expansion plots
     results['iPPB0'][volunteer] = len(preiPP)
     results['iPPB60'][volunteer] = len(postiPP)
 
+    #PS and PP overlap to make overlap plots
     results['IPSB0'][volunteer] = len(preOverlap.intersection(prePP))
     results['IPSB60'][volunteer] = len(postOverlap.intersection(postPP))
 
+    #Total breadth
     results['B60'][volunteer] = len(post.raw['cdr3'].unique())
     results['B0'][volunteer] = len(pre.raw['cdr3'].unique())
 
-
+    #Save responder status for easy parsing
     results['responder'][volunteer] = responders.loc[volunteer]['Status_2']
 
+    #Save CD154 value for asy parsing
     if volunteer in cd154.index:
         results['CD154'][volunteer] = cd154.loc[volunteer]['response']
     else:

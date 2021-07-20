@@ -62,7 +62,7 @@ for f in files:
 
         print(p)
 
-        m = re.match("H\d+_(P+\d*)_([ab])", p)
+        m = re.match("H\d+_(PP)_([ab])", p)
 
         if m:
 

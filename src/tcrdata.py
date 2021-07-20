@@ -82,8 +82,13 @@ class TcrData:
                     self.cdr3hash[hash] = set()
                 self.cdr3hash[hash].add(cdr)
 
-    def hammingintersect(self,comparisonset,dist):
-        #Get all cdrs that are within a distance of 1 form the comparison in self tcr set
+    def hammingintersect(self,comparisonset,dist = 1):
+        #Get all cdrs that are within a distance of "dist" form the comparison in self tcr set
+
+        #Uses a hashing function to speed up, so will be unreliable at large distances.
+
+        # Returns a set
+
         if len(self.cdr3hash) == 0:
             #If hash doesn't exist yet, we need to make it first
             self.buildhash()
@@ -94,14 +99,17 @@ class TcrData:
             for hash in (cdr[::2], cdr[1::2]):
                 if hash in self.cdr3hash:
                     for cdrlist in self.cdr3hash[hash]:
-                        if sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist)) <= dist:
-                            print(cdr + ' ' + cdrlist + ':' + str(sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist))))
+                        if sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist)) < dist:
+                            #print(cdr + ' ' + cdrlist + ':' + str(sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist))))
                             results.add(cdrlist)
 
         return results
 
-    def hammingmatch(self,comparisonset,dist):
-        # Get all cdrs that are within a distance of 1 from the self tcr set in the comparison set
+    def hammingmatch(self,comparisonset,dist = 1):
+        # Get all cdrs that are within a distance of "dist" from the self tcr set in the comparison set
+
+        #Uses a hashing function to speed up, so will be unreliable at large distances.
+
         if len(self.cdr3hash) == 0:
             #If hash doesn't exist yet, we need to make it first
             self.buildhash()
@@ -112,7 +120,7 @@ class TcrData:
             for hash in (cdr[::2], cdr[1::2]):
                 if hash in self.cdr3hash:
                     for cdrlist in self.cdr3hash[hash]:
-                        if sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist)) <= dist:
+                        if sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist)) < dist:
                             #print(cdr + ' ' + cdrlist + ':' + str(sum(ch1 != ch2 for ch1, ch2 in zip(cdr, cdrlist))))
                             results.add(cdr)
 
