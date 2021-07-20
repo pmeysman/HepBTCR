@@ -135,9 +135,17 @@ class TcrData:
 
         return network
 
-    def entropy(self):
+    def entropy(self, equivalent = True):
 
         def calculate_entropy(row):
             return row['freq'] * np.log(row['freq'])
 
-        return -sum(self.raw.apply(calculate_entropy, axis=1))
+        entropy = -sum(self.raw.apply(calculate_entropy, axis=1))
+
+        if not equivalent:
+
+            return entropy
+
+        else:
+
+            return entropy / np.log(len(self.raw))

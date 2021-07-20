@@ -311,9 +311,17 @@ ggsave(file.path(main_fig, 'Fig_3c_tcrspecific_day0_bystandernorm.png'),p, heigh
 
 rep$PSB0divnr = rep$PSB0/rep$PPnrB0
 r.psb0divnr<-roc(responder ~ PSB0divnr, rep[!rep$responder=='Non-converter',], plot=TRUE, grid=TRUE,print.auc=TRUE, ci=TRUE, boot.n=100, ci.alpha=0.95, stratified=FALSE, conf.level=0.95, levels=c('Late-converter','Early-converter'))
+
+#Confidence interval
+ciobj.psb0divnr <- ci.se(r.psb0divnr, specificities=seq(0, 1, l=25))
+dat.ci.psb0divnr <- data.frame(x = as.numeric(rownames(ciobj.psb0divnr)),
+                     lower = ciobj.psb0divnr[, 1],
+                     upper = ciobj.psb0divnr[, 3])
+
 p<-ggroc(r.psb0divnr, colour = 'steelblue', size = 2) + geom_segment(aes(x = 1, xend = 0, y = 0, yend = 1), color="grey", linetype="dashed")
 p<-p+xlab("Specificity") + ylab("Sensitivity")
 p<-p + labs(title="ROC for HBsAg-predictive ratio R(hbs) at day 0",subtitle=paste0("AUC = ",format(r.psb0divnr$ci,digits=2)[2], " (95% CI: ",format(r.psb0divnr$ci,digits=2)[1],"-",format(r.psb0divnr$ci,digits=2)[3],")"))
+p<-p +  geom_ribbon(data = dat.ci.psb0divnr, aes(x = x, ymin = lower, ymax = upper), fill = "steelblue", alpha= 0.2)
 p<-p + theme_bw() +   theme(plot.title = element_text(size = 12, face = "bold"),
                             plot.subtitle = element_text(size = 10),
                             axis.title.x = element_text(size = 20, face = "bold"),
@@ -328,12 +336,23 @@ ggsave(file.path(main_fig, 'Fig_3e_tcrspecific_day0_bystandernorm_ROC.png'), p, 
 # HBV-specific prediction (epitope specific)
 # Normalize with bystander repertoires
 # ROC plot CD154 vs none
+# Resolve NAs
 
 rep$PSB0divnr = rep$PSB0/rep$PPnrB0
-r.cd154b0divnr<-roc(CD154>0 ~ PSB0divnr, rep, plot=TRUE, grid=TRUE,print.auc=TRUE, ci=TRUE, boot.n=100, ci.alpha=0.95, stratified=FALSE, conf.level=0.95)
+rep.nona <- rep
+rep.nona[is.na(rep.nona)] <- 0
+r.cd154b0divnr<-roc(CD154>0 ~ PSB0divnr, rep.nona, plot=TRUE, grid=TRUE,print.auc=TRUE, ci=TRUE, boot.n=100, ci.alpha=0.95, stratified=FALSE, conf.level=0.95)
+
+#Confidence interval
+ciobj.cd154b0divnr <- ci.se(r.cd154b0divnr, specificities=seq(0, 1, l=25))
+dat.ci.cd154b0divnr <- data.frame(x = as.numeric(rownames(ciobj.cd154b0divnr)),
+                               lower = ciobj.cd154b0divnr[, 1],
+                               upper = ciobj.cd154b0divnr[, 3])
+
 p<-ggroc(r.cd154b0divnr, colour = 'steelblue', size = 2) + geom_segment(aes(x = 1, xend = 0, y = 0, yend = 1), color="grey", linetype="dashed")
 p<-p+xlab("Specificity")+ylab("Sensitivity")
 p<-p + labs(title="CD40L ROC for HBsAg-predictive ratio R(hbs) at day 0",subtitle=paste0("AUC = ",format(r.cd154b0divnr$ci,digits=2)[2], " (95% CI: ",format(r.cd154b0divnr$ci,digits=2)[1],"-",format(r.cd154b0divnr$ci,digits=2)[3],")"))
+p<-p +  geom_ribbon(data = dat.ci.cd154b0divnr, aes(x = x, ymin = lower, ymax = upper), fill = "steelblue", alpha= 0.2)
 p<-p + theme_bw() +   theme(plot.title = element_text(size = 12, face = "bold"),
                             plot.subtitle = element_text(size = 10),
                             axis.title.x = element_text(size = 20, face = "bold"),

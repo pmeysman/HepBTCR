@@ -1,5 +1,5 @@
 #!/usr/local/bin/python3
-# Script to generate scattr plots to compare day 0 and day 60 TCR repertoires
+# Script to generate time comparisons between day 0 and day 60 TCR repertoires
 # Colors overlay identified peptide / pepetide pool specific TCRs
 
 import matplotlib.pyplot as plt
@@ -101,6 +101,9 @@ for f in files:
     resdict = {}
 
     resdict['volunteer'] = root
+    resdict['responder'] = responders.loc[root]['Status_2']
+
+    #Calculate basic repertoire statistics
     resdict['B0total'] = len(pre.df.index)
     resdict['B0entropy'] = pre.entropy()
     resdict['B60total'] = len(post.df.index)
@@ -108,15 +111,20 @@ for f in files:
     resdict['B0B60overlap'] = len(set(pre.df.index).intersection(set(post.df.index)))
     resdict['B0reads'] = pre.df['count'].sum()
     resdict['B60reads'] = post.df['count'].sum()
-    resdict['responder'] = responders.loc[root]['Status_2']
+
+    #See how the repertoires overlap with the vaccine-specific TCRs from the same individual
     if 'PP' in peptotdata:
         resdict['PPTotal'] = len(peptotdata['PP'])
         if 'PP' in pepdata:
+            #How many intersect
             resdict['PPIntersect'] = len(pepdata['PP'])
+            #How many increase between time points
             resdict['PPIntInc'] = len([p for p in pepdata['PP']
                                        if pre.df.loc[p]['freq']
                                        < post.df.loc[p]['freq']])
+            #How many at Day 0
             resdict['PPIntB0freq'] = sum([pre.df.loc[p]['freq'] for p in pepdata['PP']])
+            #How many at Day 60
             resdict['PPIntB60freq'] = sum([post.df.loc[p]['freq'] for p in pepdata['PP']])
         else:
             resdict['PPIntersect'] = 0
@@ -129,30 +137,31 @@ for f in files:
     results_list.append(resdict)
 
     # Plot
+    # Replaced with ggplot functions in separate R script
 
-    plt.scatter(pre.df.loc[overlaptcr]['freq'].apply(log),
-                post.df.loc[overlaptcr]['freq'].apply(log),
-                label="Aspecific")
-    plt.xlabel(root + ' Time 0')
-    plt.ylabel(root + ' Time 60')
-    ax = plt.gca()
-    low_x, high_x = ax.get_xlim()
-    low_y, high_y = ax.get_ylim()
-    plt.plot([max(low_x, low_y), min(high_x, high_y)], [max(low_x, low_y), min(high_x, high_y)], 'k--')
+    #plt.scatter(pre.df.loc[overlaptcr]['freq'].apply(log),
+    #            post.df.loc[overlaptcr]['freq'].apply(log),
+    #            label="Aspecific")
+    #plt.xlabel(root + ' Time 0')
+    #plt.ylabel(root + ' Time 60')
+    #ax = plt.gca()
+    #low_x, high_x = ax.get_xlim()
+    #low_y, high_y = ax.get_ylim()
+    #plt.plot([max(low_x, low_y), min(high_x, high_y)], [max(low_x, low_y), min(high_x, high_y)], 'k--')
 
-    colorcode = {'PP': '#FF0000'}
-    for i in range(1, 60):
-        colorcode['P'+str(i)] = '#' + str(int(100-i)) + str(int(30 + (i**2) % 70)) + '0' + str(int(i % 10))
+    #colorcode = {'PP': '#FF0000'}
+    #for i in range(1, 60):
+    #    colorcode['P'+str(i)] = '#' + str(int(100-i)) + str(int(30 + (i**2) % 70)) + '0' + str(int(i % 10))
 
-    for peptide in pepdata:
-        if peptide == 'PP':
-            plt.scatter(pre.df.loc[pepdata[peptide]]['freq'].apply(log),
-                        post.df.loc[pepdata[peptide]]['freq'].apply(log),
-                        c=colorcode[peptide], label=peptide)
+    #for peptide in pepdata:
+    #    if peptide == 'PP':
+    #        plt.scatter(pre.df.loc[pepdata[peptide]]['freq'].apply(log),
+    #                    post.df.loc[pepdata[peptide]]['freq'].apply(log),
+    #                    c=colorcode[peptide], label=peptide)
 
-    lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-    plt.savefig(figdir + root + '_PP.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
-    plt.close()
+    #lgd = plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+    #plt.savefig(figdir + root + '_PP.pdf', bbox_extra_artists=(lgd,), bbox_inches='tight')
+    #plt.close()
 
     #quit()
 

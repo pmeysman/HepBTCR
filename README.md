@@ -29,7 +29,9 @@ The three main python scripts are:
 * peptide.py: A script to process the epitope-specific TCR data (in a leave-one-out-cross validation) and generate the feature matrix for further analysis. Outputs the processed file 'loocvrep_ab.txt' in the results folder.
 
 The analyses can be run with the following command on a device that has python3 installed.
+
 > python src/timescatter.py
+
 > python scr/peptide.py
 
 As the output files are already available in the github repository, they will be overwritten by running the python scripts.
