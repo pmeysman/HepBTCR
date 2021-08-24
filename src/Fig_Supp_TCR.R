@@ -1,3 +1,27 @@
+
+#############################
+#  load packages
+#############################
+
+require('ggplot2')
+require('ggpubr')
+require('gridExtra')
+require('scales')
+require('ggrepel')
+require('ggpubr')
+require('pROC')
+
+#############################
+# create directory to save figures
+#############################
+
+fig_dir <- 'figures'
+dir.create(fig_dir)
+
+supp_fig <- 'figures/supplementary figures'
+dir.create(supp_fig)
+
+
 #############################
 # Fig. S3a
 # Scatter plot of the DNA-based TCRβ reads for each vaccinee at each time point

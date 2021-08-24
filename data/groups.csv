@@ -1,0 +1,137 @@
+﻿Vaccinee,Time_Point,Antibody_titre,Status_60_0,Status_180_0,Status_365_0,Status_1,Status_2,Status_3,Status_4,Set
+2,0,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,3
+3,0,2,Non-converter,Non-converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,2
+4,0,2,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,1
+6,0,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+7,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+8,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+10,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,1
+11,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,2
+13,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+14,0,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+17,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+18,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+19,0,2.18,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,3
+20,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+21,0,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,1
+22,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+23,0,2,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,3
+24,0,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,6
+25,0,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,2
+26,0,2,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,4
+28,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+29,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,4
+30,0,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,7
+31,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+32,0,8.55,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,5
+33,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+34,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+35,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+36,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+38,0,2,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+39,0,2,Converter,Converter,Non-converter,Early-converter,Early-converter,Low early-converter,Low early-converter,6
+40,0,2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,7
+41,0,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,4
+42,0,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,6
+2,60,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,3
+3,60,3.62,Non-converter,Non-converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,2
+4,60,6.77,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,1
+6,60,4.12,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+7,60,40.89,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+8,60,19.38,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+10,60,409.2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,1
+11,60,20.68,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,2
+13,60,882.1,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+14,60,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+17,60,372.7,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+18,60,18.85,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+19,60,963.2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,3
+20,60,33.12,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+21,60,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,1
+22,60,361.1,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+23,60,2,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,3
+24,60,2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,6
+25,60,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,2
+26,60,3.38,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,4
+28,60,32230,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+29,60,12.28,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,4
+30,60,3.32,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,7
+31,60,53.23,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+32,60,8894.5,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,5
+33,60,13.87,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+34,60,886.5,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+35,60,284.4,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+36,60,82.23,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+38,60,62.71,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+39,60,11.28,Converter,Converter,Non-converter,Early-converter,Early-converter,Low early-converter,Low early-converter,6
+40,60,105.3,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,7
+41,60,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,4
+42,60,3.27,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,6
+2,180,40.7,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,3
+3,180,8.69,Non-converter,Non-converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,2
+4,180,23.97,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,1
+6,180,33.22,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+7,180,45.59,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+8,180,40.03,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+10,180,265.1,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,1
+11,180,104.5,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,2
+13,180,841.4,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+14,180,87.41,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+17,180,568.9,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+18,180,59.45,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+19,180,337.4,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,3
+20,180,71.18,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+21,180,4.47,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,1
+22,180,2067,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+23,180,26.37,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,3
+24,180,24.02,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,6
+25,180,2.54,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,2
+26,180,14.88,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,4
+28,180,6983,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+29,180,45.62,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,4
+30,180,28.2,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,7
+31,180,172.8,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+32,180,4147,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,5
+33,180,113.4,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+34,180,291.9,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+35,180,167.7,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+36,180,159.6,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+38,180,128.4,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+39,180,22.18,Converter,Converter,Non-converter,Early-converter,Early-converter,Low early-converter,Low early-converter,6
+40,180,975,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,7
+41,180,3.39,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,4
+42,180,6.94,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,6
+2,365,16.31,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,3
+3,365,16.07,Non-converter,Non-converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,2
+4,365,3.93,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,1
+6,365,13.47,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+7,365,12.16,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+8,365,15.62,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,1
+10,365,67.36,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,1
+11,365,54.31,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,2
+13,365,203.5,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+14,365,28.15,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,5
+17,365,155,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,2
+18,365,34.15,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+19,365,110.6,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,3
+20,365,24.1,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,3
+21,365,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,1
+22,365,779.5,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+23,365,8.88,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,3
+24,365,10.09,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,6
+25,365,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,2
+26,365,6.38,Non-converter,Converter,Non-converter,Mid-converter,Late-converter,Late-converter,Mid-converter,4
+28,365,1000,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,4
+29,365,23.09,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,4
+30,365,21.9,Non-converter,Converter,Converter,Late-converter,Late-converter,Late-converter,Late-converter,7
+31,365,41.58,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+32,365,854.8,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,5
+33,365,59.07,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,5
+34,365,105.1,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+35,365,70.2,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,6
+36,365,62.01,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+38,365,43.66,Converter,Converter,Converter,Early-converter,Early-converter,Low early-converter,Low early-converter,7
+39,365,8.76,Converter,Converter,Non-converter,Early-converter,Early-converter,Low early-converter,Low early-converter,6
+40,365,664.3,Converter,Converter,Converter,Early-converter,Early-converter,High early-converter,High early-converter,7
+41,365,4,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,4
+42,365,2,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,Non-converter,6
