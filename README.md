@@ -53,7 +53,7 @@ The analyses can be run with the following command on a device that has python3 
 > python scr/peptide.py
 
 The processing script to parse the flow cytometry data is:
-* FCM_analysis.R: A script to combine all FCM measurements into a single table called 'df_1.tsv'.
+* FCM_analysis.R: A script to combine all FCM measurements into a single table called 'df_1.tsv' in the results folder.
 
 It can be run with:
 

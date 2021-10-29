@@ -31,6 +31,7 @@ class TcrData:
         # print(self.df)
 
         self.df = self.raw.groupby(['cdr3']).agg({'count':'sum','freq':'sum','tcrseq':'sum'})
+        self.df['freq'] = self.df['freq']/self.df['freq'].sum()
 
         #print(self.df)
 
@@ -148,7 +149,7 @@ class TcrData:
         def calculate_entropy(row):
             return row['freq'] * np.log(row['freq'])
 
-        entropy = -sum(self.raw.apply(calculate_entropy, axis=1))
+        entropy = -sum(self.df.apply(calculate_entropy, axis=1))
 
         if not equivalent:
 
@@ -156,4 +157,4 @@ class TcrData:
 
         else:
 
-            return entropy / np.log(len(self.raw))
+            return entropy / np.log(len(self.df))

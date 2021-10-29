@@ -69,7 +69,6 @@ pee<-ggboxplot(time[time['responder']=='Early-converter',],y="entropy",x="day", 
 pee<-pee + stat_compare_means(method = "wilcox.test", paired = TRUE, aes(label = ..p.signif..),label.x = 1.5)
 pee<-pee + geom_line(aes(group = volunteer),alpha = 0.1)
 pee<-pee + scale_x_discrete(labels=c("Day0" = "0", "Day60" = "60"))
-pee<-pee + ylim(6,14)
 pee<-pee + xlab("Time Point (days)") + ylab("Entropy")
 pee<-pee + theme(aspect.ratio = 1.5,legend.position = "none") 
 pee
@@ -78,7 +77,6 @@ pel<-ggboxplot(time[time['responder']=='Late-converter',],y="entropy",x="day", c
 pel<-pel + stat_compare_means(method = "wilcox.test", paired = TRUE, aes(label = ..p.signif..),label.x = 1.5)
 pel<-pel + geom_line(aes(group = volunteer),alpha = 0.1)
 pel<-pel + scale_x_discrete(labels=c("Day0" = "0", "Day60" = "60"))
-pel<-pel + ylim(6,14)
 pel<-pel + xlab("Time Point (days)") + ylab("Entropy")
 pel
 
@@ -299,7 +297,7 @@ p<-p + theme_bw() +   theme(legend.title=element_blank(),
                             axis.title.y = element_text(size = 18, face = "bold"),
                             legend.position = "none", aspect.ratio = 1.5)
 p
-ggsave(file.path(main_fig, 'Fig_3c_tcrspecific_day0_bystandernorm.png'),p, height = 10, width = 8, units = "cm", dpi = 300)
+ggsave(file.path(main_fig, 'Fig_3d_tcrspecific_day0_bystandernorm.png'),p, height = 10, width = 8, units = "cm", dpi = 300)
 
 #############################
 # Fig. 3e
@@ -359,4 +357,4 @@ p<-p + theme_bw() +   theme(plot.title = element_text(size = 12, face = "bold"),
                             axis.title.y = element_text(size = 20, face = "bold"),
                             legend.position = "none", aspect.ratio = 1)
 p
-ggsave(file.path(main_fig, 'Fig_3f_cd40l_day0_bystandernorm_ROC.png'), p, height = 15, width = 12, units = "cm", dpi = 300)
+#ggsave(file.path(main_fig, 'Fig_3f_cd40l_day0_bystandernorm_ROC.png'), p, height = 15, width = 12, units = "cm", dpi = 300)
